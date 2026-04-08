@@ -13,7 +13,7 @@ export default function QRCodeSection() {
   // En producción, esto podría venir de una variable de entorno como process.env.NEXT_PUBLIC_APP_URL
   const menuUrl = typeof window !== "undefined" 
     ? `${window.location.origin}/menu` 
-    : "https://pit-market.vercel.app/menu";
+    : "https://food-menu-qr.vercel.app/";
 
   return (
     <section className="animate-slide-up bg-white rounded-3xl p-8 shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-50 flex flex-col items-center justify-center text-center mt-4">
