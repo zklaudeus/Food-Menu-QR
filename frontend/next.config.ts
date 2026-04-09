@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  output: 'export',
-};
+const nextConfig: NextConfig = {};
 
 module.exports = nextConfig;

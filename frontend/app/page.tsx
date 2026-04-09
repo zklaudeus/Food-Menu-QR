@@ -1,18 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import ProductCategory from "@/components/ProductCategory";
 import { fetchMenus } from "@/services/menuService";
 import BowlCategory from "@/components/BowlCategory";
 import SandwichCategory from "@/components/SandwichCategory";
-
-const QRCodeSection = dynamic(() => import("@/components/QRCodeSection"), { 
-  loading: () => (
-    <div className="w-full flex items-center justify-center min-h-[300px] mt-4">
-      <div className="w-8 h-8 border-4 border-brand-gold border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  )
-});
+import QRCodeSection from "@/components/QRCodeSection";
 
 export default async function StaticMenu() {
   const menuData = await fetchMenus();
