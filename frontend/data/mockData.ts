@@ -62,8 +62,10 @@ export const menuData: Product[] = [
     ingredients: {
       bases: [
         { id: 'b1', name: 'Arroz blanco' },
-        { id: 'b2', name: 'Quinoa' },
-        { id: 'b3', name: 'Mix hojas verdes' },
+        { id: 'b2', name: 'Arroz Curry' },
+        { id: 'b3', name: 'Vegetal' },
+        { id: 'b4', name: 'Corbatita' },
+        { id: 'b5', name: 'Espirales' },
       ], // Bases mocked since prompt only says "Base (1)"
       proteins: [
         { id: 'b_p1', name: 'Pollo', price: 5500 },

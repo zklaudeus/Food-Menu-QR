@@ -13,7 +13,7 @@ const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
 const BLOCK_THRESHOLD = 60; // Máximo 60 peticiones por ventana temporal.
 const WINDOW_MS = 60 * 1000; // Ventana de 1 minuto.
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // 1. OBTENER INFORMACIÓN DEL CLIENTE Y NORMALIZACIÓN DE RUTA
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'anon';
   const url = request.nextUrl;
@@ -65,7 +65,7 @@ export function middleware(request: NextRequest) {
 
 // ---------------------------------------------------------------------------------
 // CONFIGURACIÓN DE EJECUCIÓN (Matcher)
-// Qué rutas debería auditar el middleware:
+// Qué rutas debería auditar el proxy:
 // ---------------------------------------------------------------------------------
 export const config = {
   // Ignoramos activos estáticos de sistema interior (CSS, JS) para no malgastar
