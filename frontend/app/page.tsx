@@ -14,8 +14,6 @@ const QRCodeSection = dynamic(() => import("@/components/QRCodeSection"), {
   )
 });
 
-export const revalidate = 3600; // ISR cache por 1 hora
-
 export default async function StaticMenu() {
   const menuData = await fetchMenus();
   

@@ -3,7 +3,7 @@
 import { QRCodeCanvas } from "qrcode.react";
 
 export default function QRCodeSection() {
-  const menuUrl = "https://food-menu-qr.vercel.app/";
+  const menuUrl = "https://pit-market.vercel.app/";
 
   return (
     <section className="animate-slide-up bg-white rounded-3xl p-8 shadow-[0_10px_40px_rgb(0,0,0,0.06)] border border-gray-50 flex flex-col items-center justify-center text-center mt-4">
