@@ -27,7 +27,7 @@ export default async function StaticMenu() {
             alt="Pitmarket" 
             width={80} 
             height={80}
-            className="object-contain mb-1 transition-transform hover:scale-105 rounded-[24px]" 
+            className="w-full h-auto object-contain mb-1 transition-transform hover:scale-105 rounded-[24px]" 
             priority
           />
           <p className="text-[10px] uppercase tracking-widest text-brand-gray font-semibold mt-0.5">Menú del día</p>
@@ -42,8 +42,9 @@ export default async function StaticMenu() {
            <Image 
              src="/pit market-02.png" 
              alt="Pitmarket Banner" 
+             priority
              fill
-             className="object-contain transition-transform duration-700 group-hover:scale-110 p-4" 
+             className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-110 p-4" 
            />
            <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-transparent" />
         </div>
