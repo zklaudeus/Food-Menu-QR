@@ -13,7 +13,7 @@ const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
 const BLOCK_THRESHOLD = 60; // Máximo 60 peticiones por ventana temporal.
 const WINDOW_MS = 60 * 1000; // Ventana de 1 minuto.
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   // 1. OBTENER INFORMACIÓN DEL CLIENTE Y NORMALIZACIÓN DE RUTA
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'anon';
   const url = request.nextUrl;
@@ -65,12 +65,18 @@ export function proxy(request: NextRequest) {
 
 // ---------------------------------------------------------------------------------
 // CONFIGURACIÓN DE EJECUCIÓN (Matcher)
-// Qué rutas debería auditar el proxy:
+// Qué rutas debería auditar el middleware:
 // ---------------------------------------------------------------------------------
 export const config = {
-  // Ignoramos activos estáticos de sistema interior (CSS, JS) para no malgastar
-  // lógica middleware, solo filtramos visitas de Rutas de Usuarios y APIs.
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    /*
+     * Excluir:
+     * - _next/static  → assets estáticos de Next.js (JS, CSS compilado)
+     * - _next/image   → optimización de imágenes
+     * - favicon.ico   → ícono del sitio
+     * - archivos multimedia (svg, png, jpg…)
+     * - rutas con hash de Vercel Analytics/Speed Insights (ej: /abc123/script.js)
+     */
+    '/((?!_next/static|_next/image|favicon.ico|[a-f0-9]{16}/.*\\.js$|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };
